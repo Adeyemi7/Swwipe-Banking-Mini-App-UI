@@ -19,10 +19,10 @@ const closePasswordCreatedMessage = () => {
   showPasswordCreated.value = false
 }
 
-setTimeout(() => {
-  handleClose()
-  displayPasswordCreatedMessage()
-}, 3000)
+// setTimeout(() => {
+//   handleClose()
+//   displayPasswordCreatedMessage()
+// }, 3000)
 
 const handleCreatePassword = (e) => {
   e.preventDefault()
@@ -163,6 +163,12 @@ button:hover {
     width: 45%;
   }
 }
+
+/* @media (max-width: 44em) {
+  .container {
+    
+  }
+} */
 
 @media (max-width: 42em) {
   .container {
