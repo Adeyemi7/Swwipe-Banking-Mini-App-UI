@@ -174,7 +174,7 @@ button {
   }
 }
 
-@media (max-width: 44em) {
+@media (max-width: 45em) {
   .real-container {
     width: 90%;
     margin: 0 auto;
@@ -184,6 +184,9 @@ button {
     margin-top: 10%;
   }
 
+  .Create-texts {
+    font-size: 25px;
+  }
   input,
   button {
     width: 90%;

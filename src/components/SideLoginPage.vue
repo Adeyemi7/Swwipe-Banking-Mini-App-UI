@@ -123,7 +123,39 @@
   }
 }
 
-@media (max-width: 44em) {
+@media (max-width: 52.5em) {
+  .main-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+  span .phone {
+    width: 100%;
+    margin-top: 15%;
+  }
+
+  .footer {
+    width: 100%;
+  }
+
+  .heading-text {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .sub-texts {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .image-texts {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.6fr 1.4fr;
+  }
+}
+
+@media (max-width: 45em) {
   .main-container {
     width: 90%;
     margin: 0 auto;
