@@ -4,7 +4,7 @@ import CancelBar from './icons/CancelBar.vue'
 import HandMobile from './icons/HandMobile.vue'
 import SuccessfulEmailMessage from './SuccessfulEmailMessage.vue'
 
-const emit = defineEmits(['close', 'submitted'])
+const emit = defineEmits(['close'])
 const showForgotPassword = ref(false)
 
 const displaySuccessfulMessage = () => {
@@ -16,16 +16,17 @@ const closeSuccessfulMessage = () => {
 }
 
 setTimeout(() => {
-  closeSuccessfulMessage()
+  handleClose()
+  PasswordResetPage()
 }, 5000)
+
+const PasswordResetPage = () => {
+  window.location.href = '/PasswordReset'
+  this.$router.push('/PasswordReset')
+}
 
 const handleForgotPassword = (e) => {
   e.preventDefault()
-  // const email = e.target.email.value
-  emit('submitted ')
-  // setTimeout(() => {
-  //   this.$router.push('/LoginPage')
-  // }, 5000)
   displaySuccessfulMessage()
   console.log('email has been sent')
 }
@@ -98,7 +99,7 @@ const handleClose = () => {
   background-color: #ffffff;
   width: 22%;
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
@@ -167,5 +168,21 @@ button:hover {
 
 .inbox-link {
   color: #00b6ab;
+}
+
+@media (max-width: 64em) {
+  .pop-up {
+    width: 45%;
+  }
+}
+@media (max-width: 44em) {
+  .pop-up {
+    width: 60%;
+  }
+}
+@media (max-width: 42em) {
+  .pop-up {
+    width: 70%;
+  }
 }
 </style>

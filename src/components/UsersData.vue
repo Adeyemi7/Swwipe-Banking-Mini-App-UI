@@ -4,7 +4,7 @@ import SwwipeLogo from './icons/SwwipeLogo.vue'
 
 <template>
   <div class="real-container">
-    <SwwipeLogo />
+    <SwwipeLogo class="s-logo" />
 
     <section class="login-details">
       <p class="Create-texts">Create a Swwipe account</p>
@@ -94,7 +94,7 @@ import SwwipeLogo from './icons/SwwipeLogo.vue'
 .real-container {
   width: 50%;
   margin-left: 30%;
-  margin-top: 10%;
+  margin-top: 5%;
   background-color: white;
 }
 
@@ -151,5 +151,57 @@ button {
 
 .login-texts svg {
   margin-bottom: -0.1rem;
+}
+
+@media (max-width: 64em) {
+  .real-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 2em;
+  }
+
+  .s-logo {
+    margin-top: 10%;
+  }
+
+  input,
+  button {
+    width: 80%;
+  }
+
+  .forgot-password {
+    width: 80%;
+  }
+}
+
+@media (max-width: 44em) {
+  .real-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .s-logo {
+    margin-top: 10%;
+  }
+
+  input,
+  button {
+    width: 90%;
+  }
+
+  .forgot-password {
+    width: 90%;
+  }
+}
+
+@media (max-width: 41em) {
+  .real-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .s-logo {
+    margin-top: 10%;
+  }
 }
 </style>

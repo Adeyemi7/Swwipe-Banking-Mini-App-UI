@@ -31,13 +31,37 @@ const handleClose = () => {
   flex-wrap: wrap;
   background-color: #ffffff;
   position: absolute;
-  top: -15%;
-  right: -700px;
+  top: -5%;
+  right: -600px;
   transform: translate(-50%, -50%);
   padding: 10px;
   border: 1px solid #95c9b4;
   padding: 0 1em 0 1em;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 64em) {
+  .container {
+    gap: 20px;
+    top: 15%;
+    right: -370px;
+  }
+}
+
+@media (max-width: 44em) {
+  .container {
+    gap: 20px;
+    top: -5%;
+    right: -250px;
+  }
+}
+
+@media (max-width: 42em) {
+  .container {
+    gap: 20px;
+    top: -5%;
+    right: -150px;
+  }
 }
 </style>

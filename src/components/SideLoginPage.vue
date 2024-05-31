@@ -4,7 +4,7 @@
   <div class="overall-container">
     <div class="main-container">
       <span class="mobile">
-        <img src="@/assets/mobile.png" alt="mobile-image" />
+        <img class="phone" src="@/assets/mobile.png" alt="mobile-image" />
       </span>
 
       <div class="footer">
@@ -89,5 +89,75 @@
   font-size: 15px;
   font-weight: 400;
   line-height: 16px;
+}
+
+@media (max-width: 64em) {
+  .main-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+  span .phone {
+    width: 100%;
+    margin-top: 15%;
+  }
+
+  .footer {
+    width: 100%;
+  }
+
+  .heading-text {
+    font-size: 38px;
+    line-height: 42px;
+  }
+
+  .sub-texts {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .image-texts {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+  }
+}
+
+@media (max-width: 44em) {
+  .main-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+  span .phone {
+    width: 100%;
+    margin-top: 50%;
+  }
+
+  .footer {
+    width: 100%;
+  }
+
+  .heading-text {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .sub-texts {
+    font-size: 12px;
+    line-height: 25px;
+  }
+
+  .image-texts {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+  }
+}
+
+@media (max-width: 41em) {
+  .overall-container {
+    display: none;
+  }
 }
 </style>

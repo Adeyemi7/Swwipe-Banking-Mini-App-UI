@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import App from '@/App.vue'
+// import App from '@/App.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'root',
+    //   component: App
+    // },
     {
       path: '/',
-      name: 'root',
-      component: App
-    },
-    {
-      path: '/CreateAccount',
       name: 'CreateAccount',
       component: () => import('@/Pages/CreateAccount.vue')
     },
@@ -21,6 +21,11 @@ const router = createRouter({
       // this generates a separate chunk (LoginPage.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('@/Pages/LoginPage.vue')
+    },
+    {
+      path: '/PasswordReset',
+      name: 'PasswordReset',
+      component: () => import('@/Pages/PasswordReset.vue')
     },
     {
       path: '/MyErrorPage',

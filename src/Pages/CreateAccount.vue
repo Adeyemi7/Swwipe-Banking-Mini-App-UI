@@ -26,4 +26,14 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+@media (max-width: 80em) {
+}
+
+@media (max-width: 41em) {
+  .app-container {
+    width: 100%;
+    grid-template-columns: 1fr 0;
+  }
+}
 </style>

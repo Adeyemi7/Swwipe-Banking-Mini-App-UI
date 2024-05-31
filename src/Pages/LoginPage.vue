@@ -30,4 +30,19 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+@media (max-width: 41em) {
+  .app-container {
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0;
+  }
+}
+
+@media (max-width: 44em) {
+  .app-container {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+  }
+}
 </style>
