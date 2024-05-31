@@ -49,7 +49,7 @@ const handleClose = () => {
           <p class="forget-description">
             Don’t worry, it happens. Please provide the email address associated with your account
           </p>
-          <p class="">
+          <p class="handy">
             <HandMobile />
           </p>
 
@@ -175,14 +175,16 @@ button:hover {
     width: 45%;
   }
 }
-@media (max-width: 44em) {
-  .pop-up {
-    width: 60%;
-  }
-}
-@media (max-width: 42em) {
+
+@media (max-width: 26.9625em) {
   .pop-up {
     width: 70%;
+  }
+}
+
+@media (max-width: 26.9625em) {
+  .handy {
+    margin-left: -1em;
   }
 }
 </style>

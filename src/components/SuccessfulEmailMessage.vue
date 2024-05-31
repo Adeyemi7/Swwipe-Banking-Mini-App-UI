@@ -49,15 +49,15 @@ const handleClose = () => {
   }
 }
 
-@media (max-width: 44em) {
+@media (max-width: 48em) {
   .container {
     gap: 20px;
     top: -5%;
-    right: -250px;
+    right: -270px;
   }
 }
 
-@media (max-width: 42em) {
+@media (max-width: 26.9625em) {
   .container {
     gap: 20px;
     top: -5%;

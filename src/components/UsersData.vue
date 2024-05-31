@@ -66,7 +66,7 @@ import SwwipeLogo from './icons/SwwipeLogo.vue'
 
         <button class="btn" type="submit">Create Account</button>
 
-        <p>
+        <p class="buttom">
           Already have a Swwipe account?
           <router-link class="login-router" to="/LoginPage">
             <span class="login-texts">
@@ -174,7 +174,7 @@ button {
   }
 }
 
-@media (max-width: 45em) {
+@media (max-width: 26.925em) {
   .real-container {
     width: 90%;
     margin: 0 auto;
@@ -184,27 +184,8 @@ button {
     margin-top: 10%;
   }
 
-  .Create-texts {
-    font-size: 25px;
-  }
-  input,
-  button {
-    width: 90%;
-  }
-
-  .forgot-password {
-    width: 90%;
-  }
-}
-
-@media (max-width: 41em) {
-  .real-container {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .s-logo {
-    margin-top: 10%;
+  .buttom {
+    font-size: 14px;
   }
 }
 </style>

@@ -41,7 +41,7 @@ const handleCreatePassword = (e) => {
       <h1>Create New Password</h1>
       <p>Create a new password to login to your account</p>
 
-      <div>
+      <div class="handy">
         <HandMobile />
       </div>
 
@@ -164,25 +164,23 @@ button:hover {
   }
 }
 
-/* @media (max-width: 44em) {
-  .container {
-    
-  }
-} */
-
 @media (max-width: 42em) {
   .container {
-    width: 70%;
+    width: 90%;
   }
 }
 
-@media (max-width: 30em) {
+@media (max-width: 20em) {
   .container {
     width: 70%;
   }
 
-  .form-container h1 {
-    font-size: 1.5em;
+  .form-container {
+    width: 90%;
+  }
+
+  .handy {
+    margin-left: -1em;
   }
 }
 </style>

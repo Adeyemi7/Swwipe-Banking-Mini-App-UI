@@ -222,13 +222,7 @@ button {
   }
 }
 
-@media (max-width: 44em) {
-  p.footer {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 42em) {
+@media (max-width: 26.9625em) {
   div.real-container {
     width: 90vw;
     margin: 0 auto;
@@ -248,8 +242,9 @@ button {
     width: 90%;
   }
 
-  p.footer {
-    font-size: 14px;
+  p.footer,
+  .login-texts {
+    font-size: 16px;
   }
 }
 </style>
