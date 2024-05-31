@@ -19,10 +19,10 @@ const closePasswordCreatedMessage = () => {
   showPasswordCreated.value = false
 }
 
-// setTimeout(() => {
-//   handleClose()
-//   displayPasswordCreatedMessage()
-// }, 3000)
+setTimeout(() => {
+  handleClose()
+  // displayPasswordCreatedMessage()
+}, 3000)
 
 const handleCreatePassword = (e) => {
   e.preventDefault()
