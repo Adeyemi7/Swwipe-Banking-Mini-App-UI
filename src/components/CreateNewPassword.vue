@@ -158,19 +158,19 @@ button:hover {
   text-decoration: none;
 }
 
-@media (max-width: 64em) {
+@media (width <= 64em) {
   .container {
     width: 45%;
   }
 }
 
-@media (max-width: 42em) {
+@media (width <= 42em) {
   .container {
     width: 90%;
   }
 }
 
-@media (max-width: 20em) {
+@media (width <= 20em) {
   .container {
     width: 70%;
   }

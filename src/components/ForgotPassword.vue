@@ -170,19 +170,19 @@ button:hover {
   color: #00b6ab;
 }
 
-@media (max-width: 64em) {
+@media (width <= 64em) {
   .pop-up {
     width: 45%;
   }
 }
 
-@media (max-width: 26.9625em) {
+@media (width <= 26.9625em) {
   .pop-up {
     width: 70%;
   }
 }
 
-@media (max-width: 26.9625em) {
+@media (width <= 26.9625em) {
   .handy {
     margin-left: -1em;
   }

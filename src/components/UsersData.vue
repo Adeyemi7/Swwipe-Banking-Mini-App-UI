@@ -153,7 +153,7 @@ button {
   margin-bottom: -0.1rem;
 }
 
-@media (max-width: 64em) {
+@media (width <= 64em) {
   .real-container {
     width: 90%;
     margin: 0 auto;
@@ -174,7 +174,7 @@ button {
   }
 }
 
-@media (max-width: 26.925em) {
+@media (width <= 26.925em) {
   .real-container {
     width: 90%;
     margin: 0 auto;

@@ -201,7 +201,7 @@ button {
   color: #00b6ab;
 }
 
-@media (max-width: 64em) {
+@media (width <= 64em) {
   .real-container {
     width: 90%;
     margin: 0 auto;
@@ -222,7 +222,32 @@ button {
   }
 }
 
-@media (max-width: 26.9625em) {
+@media (432px <= width <= 656px) {
+  div.real-container {
+    width: 90vw;
+    margin: 0 auto;
+    padding-left: 2em;
+  }
+
+  .s-logo {
+    margin-top: 10%;
+  }
+
+  input,
+  button {
+    width: 90%;
+  }
+
+  .forgot-password {
+    width: 90%;
+  }
+
+  p.footer,
+  .login-texts {
+    font-size: 16px;
+  }
+}
+@media (width <= 26.9625em) {
   div.real-container {
     width: 90vw;
     margin: 0 auto;

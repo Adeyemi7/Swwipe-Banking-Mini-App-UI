@@ -41,7 +41,7 @@ const handleClose = () => {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 64em) {
+@media (width <= 64em) {
   .container {
     gap: 20px;
     top: 15%;
@@ -49,7 +49,7 @@ const handleClose = () => {
   }
 }
 
-@media (max-width: 48em) {
+@media (width <= 48em) {
   .container {
     gap: 20px;
     top: -5%;
@@ -57,7 +57,7 @@ const handleClose = () => {
   }
 }
 
-@media (max-width: 26.9625em) {
+@media (width <= 26.9625em) {
   .container {
     gap: 20px;
     top: -5%;

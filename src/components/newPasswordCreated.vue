@@ -41,7 +41,7 @@ const handleClose = () => {
   padding: 0 1em 0 1em;
 }
 
-@media (max-width: 64em) {
+@media (width <= 64em) {
   .container-password {
     gap: 20px;
     top: -5%;
@@ -49,7 +49,7 @@ const handleClose = () => {
   }
 }
 
-@media (max-width: 48em) {
+@media (width <= 48em) {
   .container-password {
     gap: 20px;
     top: -5%;
@@ -57,7 +57,7 @@ const handleClose = () => {
   }
 }
 
-@media (max-width: 26.9625em) {
+@media (width <= 26.9625em) {
   .container-password {
     gap: 20px;
     top: -5%;
@@ -65,7 +65,7 @@ const handleClose = () => {
   }
 }
 
-@media (max-width: 20em) {
+@media (width <= 20em) {
   .container-password {
     gap: 10px;
     top: -2%;

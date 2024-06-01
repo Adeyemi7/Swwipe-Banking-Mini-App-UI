@@ -91,7 +91,7 @@
   line-height: 16px;
 }
 
-@media (max-width: 64em) {
+@media (width <= 64em) {
   .main-container {
     width: 90%;
     margin: 0 auto;
@@ -123,7 +123,7 @@
   }
 }
 
-@media (max-width: 52.5em) {
+@media (width <= 52.5em) {
   .main-container {
     width: 90%;
     margin: 0 auto;
@@ -155,7 +155,7 @@
   }
 }
 
-@media (max-width: 45em) {
+@media (width <= 45em) {
   .main-container {
     width: 90%;
     margin: 0 auto;
@@ -187,7 +187,7 @@
   }
 }
 
-@media (max-width: 41em) {
+@media (width <= 41em) {
   .overall-container {
     display: none;
   }
