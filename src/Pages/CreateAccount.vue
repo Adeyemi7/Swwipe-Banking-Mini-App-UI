@@ -25,6 +25,8 @@ export default {
 .app-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /* margin: 0 auto; */
+  /* transform: translate(-50%, -50%); */
 }
 
 @media (max-width: 80em) {

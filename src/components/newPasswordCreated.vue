@@ -68,7 +68,7 @@ const handleClose = () => {
 @media (width <= 20em) {
   .container-password {
     gap: 10px;
-    top: -2%;
+    top: 10%;
     right: -170px;
   }
 }

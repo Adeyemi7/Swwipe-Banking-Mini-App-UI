@@ -251,7 +251,7 @@ button {
   div.real-container {
     width: 90vw;
     margin: 0 auto;
-    padding-left: 2em;
+    padding-left: 1em;
   }
 
   .s-logo {

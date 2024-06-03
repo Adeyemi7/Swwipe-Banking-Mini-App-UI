@@ -60,7 +60,7 @@ const handleClose = () => {
 @media (width <= 26.9625em) {
   .container {
     gap: 20px;
-    top: -5%;
+    top: 10%;
     right: -150px;
   }
 }

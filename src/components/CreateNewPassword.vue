@@ -170,17 +170,67 @@ button:hover {
   }
 }
 
+@media (width <= 30em) {
+  .container {
+    width: 80%;
+  }
+
+  .form-container {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .handy svg {
+    margin-left: 0.5em;
+    width: 80%;
+  }
+}
+
+@media (width <= 27em) {
+  .container {
+    width: 80%;
+  }
+
+  .form-container {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .handy svg {
+    margin-left: 0.5em;
+    width: 80%;
+  }
+}
+
+@media (width <= 24em) {
+  .container {
+    width: 80%;
+  }
+
+  .form-container {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .handy svg {
+    margin-left: 0.5em;
+    width: 80%;
+  }
+}
+
 @media (width <= 20em) {
   .container {
     width: 70%;
   }
 
   .form-container {
-    width: 90%;
+    width: 100%;
+    padding-left: 0;
   }
 
-  .handy {
-    margin-left: -1em;
+  .handy svg {
+    margin-left: 0.5em;
+    width: 80%;
   }
 }
 </style>

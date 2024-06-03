@@ -174,14 +174,131 @@ button {
   }
 }
 
-@media (width <= 26.925em) {
+@media (width <= 29.6875em) {
+  .real-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  .s-logo {
+    margin-top: 10%;
+  }
+
+  .header-texts {
+    font-size: 20px;
+    margin-top: -1em;
+  }
+
+  .registration-inputs {
+    margin-top: 2em;
+    font-size: 18px;
+  }
+
+  input,
+  button {
+    width: 100%;
+  }
+
+  .buttom {
+    font-size: 18px;
+  }
+
+  .login-texts {
+    font-size: 18px;
+  }
+}
+
+@media (width <= 26.5625em) {
+  .real-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  .s-logo {
+    margin-top: 10%;
+  }
+
+  .header-texts {
+    font-size: 20px;
+    margin-top: -1em;
+  }
+
+  .registration-inputs {
+    margin-top: 2em;
+    font-size: 18px;
+  }
+
+  input,
+  button {
+    width: 100%;
+  }
+
+  .buttom {
+    font-size: 18px;
+  }
+
+  .login-texts {
+    font-size: 18px;
+  }
+}
+
+@media (width <= 23.4375em) {
+  .real-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  .s-logo {
+    margin-top: 10%;
+  }
+
+  p.Create-texts {
+    font-size: 29px;
+  }
+
+  .header-texts {
+    font-size: 18px;
+    margin-top: -1em;
+  }
+
+  .registration-inputs {
+    margin-top: 2em;
+  }
+
+  input,
+  button {
+    width: 100%;
+  }
+
+  .buttom {
+    font-size: 18px;
+  }
+
+  .login-texts {
+    font-size: 18px;
+  }
+}
+
+@media (width <= 20em) {
   .real-container {
     width: 90%;
     margin: 0 auto;
   }
 
+  p.Create-texts {
+    font-size: 23px;
+  }
+
   .s-logo {
     margin-top: 10%;
+  }
+
+  input,
+  button {
+    width: 100%;
   }
 
   .buttom {
