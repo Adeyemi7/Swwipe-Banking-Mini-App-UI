@@ -1,5 +1,46 @@
 <script setup>
+import { reactive, computed } from 'vue'
 import SwwipeLogo from './icons/SwwipeLogo.vue'
+import useVuelidate from '@vuelidate/core'
+import { required, email, minLength, helpers } from '@vuelidate/validators'
+// import { sameAs } from '@vuelidate/validators';
+
+const state = reactive({
+  password: '',
+  passwordRepeat: '',
+  email: '',
+  businessName: ''
+})
+
+const rules = computed(() => ({
+  password: {
+    required: helpers.withMessage('Please enter a valid password', required),
+    minLength: minLength(6)
+    // sameAs  : sameAs(state.passwordRepeat)
+  },
+  passwordRepeat: {
+    required: helpers.withMessage('Please confirm your password', required),
+    minLength: minLength(6)
+    // sameAs:sameAs(state.password)
+  },
+  email: {
+    required: helpers.withMessage('Please enter a valid email address with @ symbol', required),
+    email
+  },
+  businessName: {
+    required: helpers.withMessage('Business name must be verified before submission', required),
+    minLength: minLength(6)
+  }
+}))
+
+const v$ = useVuelidate(rules, state)
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  const result = await v$.value.$validate()
+  if (!result) return
+  console.log('submitted')
+}
 </script>
 
 <template>
@@ -7,55 +48,67 @@ import SwwipeLogo from './icons/SwwipeLogo.vue'
     <SwwipeLogo class="s-logo" />
 
     <section class="login-details">
-      <p class="Create-texts">Create a Swwipe account</p>
-      <p class="header-texts">Start receiving payments for your business</p>
+      <div>
+        <p class="Create-texts">Create a Swwipe account</p>
+        <p class="header-texts">Start receiving payments for your business</p>
+      </div>
 
       <form @submit="handleSubmit" class="registration-inputs">
-        <div class="label-input">
+        <div class="label-input" :class="{ error: v$.businessName.$error.length }">
           <label for="business-name"> Business Name </label> <br />
           <input
             type="text"
+            v-model="state.businessName"
             placeholder="Enter Business Name"
             name="business-name"
             id="business-name"
-            required
           />
+          <div v-for="error in v$.businessName.$errors" :key="error.$uid" class="error-msg">
+            {{ error.$message }}
+          </div>
         </div>
 
-        <div class="label-input">
+        <div class="label-input" :class="v$.email.$errors.length">
           <label for="email-address"> Email Address </label> <br />
           <input
             type="email"
             placeholder="Enter Email Address"
             name="email-address"
             id="email-address"
-            required
+            v-model="state.email"
           />
+          <div v-for="error in v$.email.$errors" :key="error.$uid" class="error-msg">
+            {{ error.$message }}
+          </div>
         </div>
 
-        <div class="label-input">
+        <div class="label-input" :class="{ error: v$.password.$errors.length }">
           <label for="password"> Password </label> <br />
           <input
-            v-model="password"
             type="password"
             placeholder="Create Password"
             name="password"
             id="password"
-            required
+            v-model="state.password"
           />
+          <div v-for="error in v$.password.$errors" :key="error.$uid" class="error-msg">
+            {{ error.$message }}
+          </div>
         </div>
 
-        <div class="label-input">
+        <div class="label-input" :class="{ error: v$.passwordRepeat.$errors.length }">
           <label for="password-repeat"> Repeat Password </label> <br />
           <input
             type="password"
             placeholder="Re-enter Password"
             name="psw-repeat"
             id="psw-repeat"
-            required
+            v-model="state.passwordRepeat"
           />
+          <div v-for="error in v$.passwordRepeat.$errors" :key="error.$uid" class="error-msg">
+            {{ error.$message }}
+          </div>
         </div>
-
         <div class="container signin">
           <p>
             By Creating an account, you agree to Swwipe’s
@@ -151,6 +204,10 @@ button {
 
 .login-texts svg {
   margin-bottom: -0.1rem;
+}
+
+.error-msg {
+  color: red;
 }
 
 @media (width <= 64em) {

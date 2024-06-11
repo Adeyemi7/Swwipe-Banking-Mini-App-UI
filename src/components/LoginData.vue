@@ -1,15 +1,36 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive, computed } from 'vue'
+import useVuelidate from '@vuelidate/core'
+import { required, email, minLength, helpers } from '@vuelidate/validators'
 import SwwipeLogo from './icons/SwwipeLogo.vue'
 import ForgotPassword from './ForgotPassword.vue'
 
-const showForgotPassword = ref(false)
+// const checkBox = document.querySelector('.checkbox')
 
-const handleSubmit = (e) => {
-  e.preventDefault()
-  console.log(username.value)
-  console.log(password.value)
-}
+// checkBox.addEventListener('click', function () {
+//   checkBox.style.backgroundColor = '#00b6ab'
+// })
+
+const state = reactive({
+  email: '',
+  password: ''
+})
+
+const rules = computed(() => ({
+  email: {
+    required: helpers.withMessage('Please enter a valid email address with @ symbol', required),
+    email
+  },
+  password: {
+    required: helpers.withMessage('Please enter a valid password', required),
+    minLength: minLength(6)
+    // sameAs  : sameAs(state.passwordRepeat)
+  }
+}))
+
+const v$ = useVuelidate(rules, state)
+
+const showForgotPassword = ref(false)
 
 const openForgotPassword = () => {
   showForgotPassword.value = true
@@ -19,8 +40,12 @@ const closeForgotPassword = () => {
   showForgotPassword.value = false
 }
 
-const username = ref('')
-const password = ref('')
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  const result = await v$.value.$validate()
+  if (!result) return
+  console.log('submitted')
+}
 </script>
 
 <template>
@@ -52,27 +77,96 @@ const password = ref('')
       <p class="Create-texts">Login</p>
 
       <form @submit="handleSubmit" class="registration-inputs">
-        <div class="label-input">
+        <div class="label-input" :class="v$.email.$errors.length">
           <label for="email-address"> Email Address </label> <br />
           <input
             type="email"
             placeholder="Enter Email Address"
             name="email-address"
             id="email-address"
-            required
+            v-model="state.email"
           />
+
+          <div v-for="error in v$.email.$errors" :key="error.$uid" class="error-msg">
+            {{ error.$message }}
+          </div>
         </div>
 
-        <div class="label-input">
-          <label for="password"> Password </label> <br />
-          <input
-            v-model="password"
-            type="password"
-            placeholder="Password"
-            name="password"
-            id="password"
-            required
-          />
+        <div class="new-content">
+          <div class="label-input" :class="{ error: v$.password.$errors.lngth }">
+            <label for="password"> Password </label> <br />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+              v-model="state.password"
+            />
+
+            <div v-for="error in v$.password.$errors" :key="error.$uid" class="error-msg">
+              {{ error.$message }}
+            </div>
+
+            <div class="hidden">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12.0001 19.0004C11.1581 19.0004 10.3151 18.8224 9.49609 18.5054"
+                  stroke="#292B33"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.882 12.4688C18.99 15.9677 15.495 19.0007 12 19.0007"
+                  stroke="#292B33"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M19.0791 8.9209C19.7701 9.7299 20.3841 10.6119 20.8821 11.5329C21.0391 11.8239 21.0391 12.1769 20.8821 12.4679"
+                  stroke="#292B33"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M5 19.001L19 5.00098"
+                  stroke="#292B33"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9.77309 14.2281C8.54309 12.9981 8.54309 11.0031 9.77309 9.77309C11.0031 8.54309 12.9981 8.54309 14.2281 9.77309"
+                  stroke="#292B33"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.9997 5.00098C8.50475 5.00098 5.00975 8.03398 3.11775 11.534C2.96075 11.825 2.96075 12.178 3.11775 12.469C4.06375 14.218 5.40975 15.85 6.95575 17.046"
+                  stroke="#292B33"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M17.044 6.95698C15.497 5.75998 13.748 5.00098 12 5.00098"
+                  stroke="#292B33"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
 
         <div class="forgot-password">
@@ -141,11 +235,16 @@ button {
   width: 70%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 5px;
   font-weight: 400;
+}
+
+.hidden {
+  position: absolute;
+  top: 47%;
+  left: 75%;
+  display: none;
 }
 
 button {
@@ -190,7 +289,6 @@ button {
   align-items: center;
 }
 .forgot-password {
-  margin-top: -1rem;
   color: #00b6ab;
   text-align: right;
   width: 70%;
@@ -199,6 +297,10 @@ button {
 .forgot-password p {
   cursor: pointer;
   color: #00b6ab;
+}
+
+.error-msg {
+  color: red;
 }
 
 @media (width <= 64em) {

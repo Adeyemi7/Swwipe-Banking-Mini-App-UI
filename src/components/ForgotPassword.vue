@@ -1,8 +1,23 @@
 <script setup>
-import { defineEmits, ref } from 'vue'
+import { defineEmits, ref, reactive, computed } from 'vue'
+import useVuelidate from '@vuelidate/core'
+import { required, email, helpers } from '@vuelidate/validators'
 import CancelBar from './icons/CancelBar.vue'
 import HandMobile from './icons/HandMobile.vue'
 import SuccessfulEmailMessage from './SuccessfulEmailMessage.vue'
+
+const state = reactive({
+  email: ''
+})
+
+const rules = computed(() => ({
+  email: {
+    required: helpers.withMessage('Please enter a valid email address with @ symbol', required),
+    email
+  }
+}))
+
+const v$ = useVuelidate(rules, state)
 
 const emit = defineEmits(['close'])
 const showForgotPassword = ref(false)
@@ -18,15 +33,17 @@ const closeSuccessfulMessage = () => {
 setTimeout(() => {
   handleClose()
   PasswordResetPage()
-}, 5000)
+}, 9000)
 
 const PasswordResetPage = () => {
   window.location.href = '/PasswordReset'
   this.$router.push('/PasswordReset')
 }
 
-const handleForgotPassword = (e) => {
+const handleForgotPassword = async (e) => {
   e.preventDefault()
+  // const result = await v$.value.$validate()
+  // if (!result) return
   displaySuccessfulMessage()
   console.log('email has been sent')
 }
@@ -53,14 +70,14 @@ const handleClose = () => {
             <HandMobile />
           </p>
 
-          <div class="label-input">
+          <div class="label-input" :class="v$.email.$errors.length">
             <label for="email-address"> Email Address </label> <br />
             <input
               type="email"
               placeholder=" sammymetaverse@gmail.com"
               name="email-address"
               id="email-address"
-              required
+              v-model="state.email"
             />
           </div>
 

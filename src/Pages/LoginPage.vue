@@ -1,21 +1,10 @@
-<script>
+<script setup>
 import LoginData from '@/components/LoginData.vue'
 import SideLoginPage from '@/components/SideLoginPage.vue'
 
 // setTimeout(() => {
 //   this.$router.push('/LoginPage')
 // }, 5000)
-
-export default {
-  name: 'MyLoginPage',
-  components: {
-    LoginData,
-    SideLoginPage
-  },
-  data() {
-    return {}
-  }
-}
 </script>
 
 <template>
