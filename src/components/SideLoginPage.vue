@@ -16,11 +16,13 @@
         </p>
 
         <div class="image-texts">
-          <p class="trio-images">
-            <img src="@/assets/Ceo.png" alt="ceo-image" />
-            <img src="@/assets/dev.png" alt="ceo-image" />
-            <img src="@/assets/Hr.png" alt="ceo-image" />
-          </p>
+          <div class="pictures">
+            <p class="trio-images">
+              <img src="@/assets/Ceo.png" alt="ceo-image" />
+              <img src="@/assets/dev.png" alt="ceo-image" />
+              <img src="@/assets/Hr.png" alt="ceo-image" />
+            </p>
+          </div>
 
           <span class="trio-texts">
             5000+ <br />
@@ -41,34 +43,71 @@
 
 .main-container {
   padding-left: 10%;
-  width: 70%;
+  width: 80%;
 }
 
 .mobile img {
   width: 70%;
-  margin-top: 20%;
+  margin-top: 10%;
+  animation: image-slide 1s linear;
+}
+
+@keyframes image-slide {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.footer {
+  animation: footer-slide 1s linear;
+}
+
+@keyframes footer-slide {
+  0% {
+    transform: translateX(-15%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .image-texts {
   width: 80%;
   display: grid;
   grid-template-columns: 0.5fr 1.5fr;
+  margin-top: 1rem;
+}
+
+.pictures {
+  margin-left: -3rem;
 }
 
 .heading-text {
-  font-size: 48px;
+  font-size: 42px;
   font-family: 800;
-  line-height: 56px;
+  line-height: 48px;
   color: #1f2937;
 }
 
 .sub-texts {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 28px;
+  line-height: 22px;
   color: #1f2937;
-  max-width: 450px;
-  margin-top: -1rem;
+  max-width: 600px;
+  margin-top: 1rem;
+}
+
+.image-texts {
+  display: grid;
+}
+.trio-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .trio-images img {
@@ -76,8 +115,8 @@
 }
 
 .trio-texts {
-  margin-left: -1rem;
-  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+  margin-left: -3rem;
   font-size: 20px;
   font-family: 800;
   color: #000000;

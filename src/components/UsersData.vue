@@ -1,9 +1,10 @@
 <script setup>
-import { reactive, computed } from 'vue'
 import SwwipeLogo from './icons/SwwipeLogo.vue'
-import useVuelidate from '@vuelidate/core'
-import { required, email, minLength, helpers } from '@vuelidate/validators'
-// import { sameAs } from '@vuelidate/validators';
+import { reactive, computed } from 'vue'
+import { useVuelidate } from '@vuelidate/core'
+import { required, email, minLength, maxLength, helpers } from '@vuelidate//validators'
+// import {regex} from '@vuelidate/validators'
+import { sameAs } from '@vuelidate/validators'
 
 const state = reactive({
   password: '',
@@ -12,16 +13,18 @@ const state = reactive({
   businessName: ''
 })
 
+// const alpha = helpers.regex(/^([a-zA-Z0-9.]+)$/)
+
 const rules = computed(() => ({
   password: {
     required: helpers.withMessage('Please enter a valid password', required),
-    minLength: minLength(6)
-    // sameAs  : sameAs(state.passwordRepeat)
+    minLength: minLength(8),
+    maxLength: maxLength(20)
+    // regex: helpers.regex('alphaNumDot', /^([a-zA-Z0-9.]+)$/)
   },
   passwordRepeat: {
     required: helpers.withMessage('Please confirm your password', required),
-    minLength: minLength(6)
-    // sameAs:sameAs(state.password)
+    sameAs: sameAs(state.password)
   },
   email: {
     required: helpers.withMessage('Please enter a valid email address with @ symbol', required),
@@ -38,8 +41,8 @@ const v$ = useVuelidate(rules, state)
 const handleSubmit = async (e) => {
   e.preventDefault()
   const result = await v$.value.$validate()
-  if (!result) return
-  console.log('submitted')
+  if (!result) return console.log('Form is invalid')
+  console.log('Form is valid')
 }
 </script>
 
@@ -164,18 +167,19 @@ const handleSubmit = async (e) => {
 input,
 button {
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 16px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 5px;
+  border: 1px solid #9ea2b3;
   font-weight: 400;
 }
 
 button {
   background-color: #edeef2;
   color: #9ea2b3;
+  margin-bottom: 1em;
 }
 
 .btn:hover {
@@ -204,6 +208,8 @@ button {
 
 .login-texts svg {
   margin-bottom: -0.1rem;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .error-msg {
@@ -244,7 +250,7 @@ button {
 
   .header-texts {
     font-size: 20px;
-    margin-top: -1em;
+    margin-top: 1em;
   }
 
   .registration-inputs {
@@ -279,7 +285,7 @@ button {
 
   .header-texts {
     font-size: 20px;
-    margin-top: -1em;
+    margin-top: 1em;
   }
 
   .registration-inputs {
@@ -318,7 +324,7 @@ button {
 
   .header-texts {
     font-size: 18px;
-    margin-top: -1em;
+    margin-top: 1em;
   }
 
   .registration-inputs {
@@ -359,7 +365,7 @@ button {
   }
 
   .buttom {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 </style>

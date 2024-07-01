@@ -34,9 +34,9 @@ const handleClose = () => {
   top: -5%;
   right: -600px;
   transform: translate(-50%, -50%);
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #95c9b4;
-  padding: 0 1em 0 1em;
+  padding: 0 1.5em 0 1.5em;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }

@@ -124,6 +124,12 @@ const handleClose = () => {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
+.handy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .bar {
   display: flex;
   justify-content: flex-end;
@@ -200,8 +206,8 @@ button:hover {
 }
 
 @media (width <= 26.9625em) {
-  .handy {
+  /* .handy {
     margin-left: -1em;
-  }
+  } */
 }
 </style>

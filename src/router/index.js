@@ -26,6 +26,11 @@ const router = createRouter({
       path: '/MyErrorPage',
       name: 'MyError',
       component: () => import('@/Pages/MyError.vue')
+    },
+    {
+      path: '/UsersDashboard',
+      name: 'UsersDashboard',
+      component: () => import('@/Pages/UsersDashboard.vue')
     }
   ]
 })

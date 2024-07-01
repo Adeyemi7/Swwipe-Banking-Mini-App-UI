@@ -1,8 +1,37 @@
 <script setup>
-import { defineEmits, ref } from 'vue'
+import { defineEmits, ref, reactive, computed } from 'vue'
+import useVuelidate from '@vuelidate/core'
+import { required, minLength, helpers } from '@vuelidate/validators'
+import { sameAs } from '@vuelidate/validators'
 import HandMobile from './icons/HandMobile.vue'
 import SwwipeLogo from './icons/SwwipeLogo.vue'
 import newPasswordCreated from './newPasswordCreated.vue'
+
+const state = reactive({
+  password: '',
+  passwordRepeat: ''
+})
+
+const rules = computed(() => ({
+  password: {
+    required: helpers.withMessage('Please enter a valid password', required),
+    minLength: minLength(6)
+  },
+  passwordRepeat: {
+    required: helpers.withMessage('Please confirm your password', required),
+    minLength: minLength(6),
+    sameAs: sameAs(state.password)
+  }
+}))
+
+const v$ = useVuelidate(rules, state)
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  const result = await v$.value.$validate()
+  if (!result) return
+  console.log('submitted')
+}
 
 const emit = defineEmits(['close'])
 const showPasswordCreated = ref(false)
@@ -22,7 +51,7 @@ const closePasswordCreatedMessage = () => {
 setTimeout(() => {
   handleClose()
   // displayPasswordCreatedMessage()
-}, 3000)
+}, 5000)
 
 const handleCreatePassword = (e) => {
   e.preventDefault()
@@ -47,29 +76,34 @@ const handleCreatePassword = (e) => {
 
       <form class="form-content">
         <div class="label-input">
-          <label for="password"> New Password </label> <br />
+          <label for="password" :class="{ error: v$.password.$error.length }"> New Password </label>
+          <br />
           <input
-            v-model="password"
+            v-model="state.password"
             type="password"
             placeholder="Password"
             name="password"
             id="password"
-            required
           />
+          <div v-for="error in v$.password.$errors" :key="error.$uid" class="error-msg">
+            {{ error.$message }}
+          </div>
         </div>
 
-        <div class="label-password">
+        <div class="label-password" :class="{ error: v$.passwordRepeat.$error.length }">
           <label for="password"> Confirm Password </label> <br />
           <input
-            v-model="password"
+            v-model="state.passwordRepeat"
             type="password"
             placeholder="Re-enter new password"
             name="new-password"
             id="new-password"
-            required
           />
+          <div v-for="error in v$.passwordRepeat.$errors" :key="error.$uid" class="error-msg">
+            {{ error.$message }}
+          </div>
         </div>
-        <button @click="handleCreatePassword">Create Password</button>
+        <button @click="handleSubmit">Create Password</button>
 
         <div>
           <newPasswordCreated v-if="showPasswordCreated" @close="closePasswordCreatedMessage" />
@@ -102,10 +136,15 @@ const handleCreatePassword = (e) => {
   margin-bottom: 2em;
 }
 
+.handy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .form-container {
   background-color: #ffffff;
   width: 100%;
-  margin-top: 2em;
   position: absolute;
   padding: 20px;
   border-radius: 10px;
@@ -129,7 +168,7 @@ label {
 input,
 button {
   padding: 10px;
-  margin: 10px 0;
+  margin: 8px 0;
   border-radius: 5px;
   border: 1px solid #ccc;
   margin: 0 auto;
@@ -142,6 +181,7 @@ button {
   margin-top: 3em;
   background-color: #edeef2;
   color: #9ea2b3;
+  margin-bottom: 1em;
 }
 
 button:hover {
@@ -151,11 +191,19 @@ button:hover {
 
 .login-texts {
   color: #20102b;
+  text-decoration: none;
 }
 
 .login-texts span {
   color: #00b6ab;
   text-decoration: none;
+}
+
+.error-msg {
+  color: red;
+  text-align: left;
+  margin-top: 0.5em;
+  margin-left: 1.5em;
 }
 
 @media (width <= 64em) {

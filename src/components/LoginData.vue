@@ -184,7 +184,9 @@ const handleSubmit = async (e) => {
           <span>Stay signed into your Swwipe account</span>
         </div>
 
-        <button class="btn" type="submit">Login to your account</button>
+        <router-link to="/UsersDashboard">
+          <button class="btn" type="submit">Login to your account</button>
+        </router-link>
 
         <p class="footer">
           Don’t have a Swwipe account?
@@ -220,6 +222,10 @@ const handleSubmit = async (e) => {
   background-color: white;
 }
 
+.back {
+  margin-top: 2rem;
+}
+
 .login-details {
   margin-top: 10%;
   color: #4b5563;
@@ -233,11 +239,14 @@ const handleSubmit = async (e) => {
 input,
 button {
   width: 70%;
-  padding: 12px 20px;
-  margin: 8px 0;
   box-sizing: border-box;
   border-radius: 5px;
   font-weight: 400;
+  padding: 10px 16px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #9ea2b3;
 }
 
 .hidden {
@@ -250,6 +259,8 @@ button {
 button {
   background-color: #edeef2;
   color: #9ea2b3;
+  margin-bottom: 2em;
+  margin-top: 1em;
 }
 
 .btn:hover {
@@ -273,8 +284,9 @@ button {
 }
 
 .login-texts svg {
-  margin-bottom: -0.1rem;
+  margin-bottom: -0.2rem;
   text-decoration: none;
+  display: inline-block;
 }
 
 .container-signin {
